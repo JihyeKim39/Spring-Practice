@@ -26,7 +26,7 @@
 - 의존성이 없고 추후 테스트 및 유지보수가 편리한 유연성의 장점을 지님 
 
 ★ 스프링 사골문제 ~ 
-
+https://ittrue.tistory.com/234
 - 프레임워크 
 - DI / AOP / PSA 
 - POJO
@@ -92,7 +92,8 @@ https://velog.io/@dltkdgus1850/Spring-%ED%94%84%EB%A1%9D%EC%8B%9C%EB%9E%80
 orm / jpa 포트폴리오 할 때 어떤걸로 갈지 생각해보기 
 https://velog.io/@jeong-god/ORM%EA%B3%BC-JPA%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C
 
-=========================================
+==================================================================================
+
 
 수업 노트 / 06-19 (수)
 
@@ -136,5 +137,83 @@ class 앞에 'abstract' 키워드를 사용하여 정의하며, 
 다중 상속이 불가능합니다.
 출처: https://hahahoho5915.tistory.com/70 
 
-
 Controller 와 항상 붙어 있는 것 -> @RequestMapping("/board/")
+
+==================================================================================
+
+* 스프링으로 게시판 만들기 
+https://melonpeach.tistory.com/51
+
+http://localhost:8080/sample/ex02List?ids=111&ids=222&ids=333
+key값이 ids 로 동일 = 같은 이름의 파라메트가 여러개다 -> arraylist로 받아야 한다. (복수일 경우)
+https://blog.thelumayi.com/24
+
+# Controller 의 화면처리 
+https://velog.io/@jwons44/Spring-%EC%9D%91%EB%8B%B5%EB%B0%A9%EC%8B%9D
+
+Controller 와서 model 찍어넣고 화면 넘기기 -> 
+View (DTO)
+spring mvc - model (데이터 전달자)
+model 객체는 컨트롤러에서 생성된 데이터를 담아서 JSP 에 전달하는 역할을 하는 존재다.
+뷰(VIEW) 로 전달해야 하는 데이터를 담아서 보낼 수 있다
+
+스프링 MVC에서 MODEL 을 이용한 데이터 전달 
+public String home (model home){
+	model. addAttribute("serverTime", new java.util.Date());
+	return home;
+}
+
+@ModelAttribute 어노테이션 사용
+강제로 전달받은 파라미터를 model 에 담아서 전달할 때 필요.
+타입에 관계없이 무조건 model 에 담아서 전달됨
+= 파라미터로 전달된 데이터를 다시 화면에서 사용해야 할 경우 유용하게 사용됨
+
+전달받은 파라미터를 Model에 담아서 화면까지 전달하려 할 때 사용되는 어노테이션입니다.
+ex) @ModelAttribute("받을값") 사용할 변수
+@RequestParam + medel.addAttribute 처럼 작동
+@ModelAttribute를 이용하면 커멘드 객체의 이름을 변경할 수 있고, 이렇게 변경된 이름은 뷰에서 커멘드 객체를 참조할 때 사용된다.
+
+< RediretAttributes 객체 >
+ex) return "redirect:http//www.naver.com";
+
+스프링 Redirect 처리
+return값에 "redirect:이동 url적기"
+리다이렉트 이동시 파라미터 값을 전달하는 방법
+ex) addFlashAttribute()
+ResponseController.java
+==================================================================================
+
+< JSON 방식 이란 ? >
+https://chb2005.tistory.com/99
+JSON(JavaScript Object Notation)은 데이터를 저장/전송 할 때 많이 사용되는 형식
+서버와 클라이언트 간의 통신에서 주로 많이 사용됨
+아래와 같이 Key, Value 구조를 가짐
+
+{
+    "teamName" : "Tottenham",
+    "league" : "Premier League",
+    "ranking" : 5,
+    "players" : [
+        {
+        "name" : "Son Heungmin",
+        "backNumber" : 7,
+        "age" : 30
+        },
+        {
+        "name" : "Harry Kane",
+        "backNumber" : 10,
+        "age" : 29
+        },
+        {
+        "name" : "Hugo Lloris",
+        "backNumber" : 1,
+        "age" : 36
+        }
+    ]
+}
+
+==================================================================================
+
+ResponseController.java
+https://mangkyu.tistory.com/49
+
