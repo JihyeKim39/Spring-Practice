@@ -1,0 +1,30 @@
+package com.borard.simple_board.board.db;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity // jakarta.persistence.Entity 대신 javax.persistence.Entity를 사용
+public class BoardEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // long 대신 Long으로 사용 (참고: 기본값이 null이 될 수 있도록)
+
+    private String boardName;
+    private String status;
+}

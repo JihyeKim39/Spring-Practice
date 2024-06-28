@@ -1,0 +1,32 @@
+package com.borard.simple_board.board.model;
+
+import java.util.Properties;
+
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.validation.annotation.Validated;
+
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder 
+@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
+//snake case 사용할거라 Json Naming->json property 
+public class BoardRequest {
+	@NotBlank
+	private String boaradName;
+	
+}

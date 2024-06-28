@@ -1,0 +1,5 @@
+package com.borard.simple_board.post.db;
+
+public interface PostRepository {
+
+}
